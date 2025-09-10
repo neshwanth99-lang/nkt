@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neshwanth Kumar Tene — Portfolio</title>
+    <meta name="description" content="Neshwanth Kumar Tene's professional portfolio, showcasing experience as a Materials Scientist and R&D Engineer." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b0d12;
+            --card-bg: #10141c;
+            --border: #2c3340;
+            --text-color: #e2e8f0;
+            --muted-color: #94a3b8;
+            --accent-primary: #8b5cf6;
+            --accent-secondary: #0ea5e9;
+            --success-color: #22c55e;
+            --chip-bg: #1e293b;
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg: #f8fafc;
+                --card-bg: #ffffff;
+                --border: #e2e8f0;
+                --text-color: #1e293b;
+                --muted-color: #64748b;
+                --accent-primary: #8b5cf6;
+                --accent-secondary: #0ea5e9;
+                --success-color: #22c55e;
+                --chip-bg: #e2e8f0;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        /* Inline SVG filter for light/dark mode */
+        body[style*="--text-color-filter:"] .social-links a img {
+          filter: var(--text-color-filter);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Hero */
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .profile-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent-primary);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            margin-bottom: 24px;
+        }
+
+        .hero-section h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+
+        .hero-section p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--muted-color);
+            margin-bottom: 16px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .social-links a {
+            color: var(--muted-color);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        /* Main Content Grid */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            padding-bottom: 80px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
+        }
+
+        .about-text {
+            color: var(--muted-color);
+        }
+
+        .skills-grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .skill-category h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-color);
+        }
+
+        .chips-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .chip {
+            background-color: var(--chip-bg);
+            color: var(--muted-color);
+            font-size: 0.875rem;
+            padding: 6px 12px;
+            border-radius: 999px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .chip:hover {
+            background-color: var(--accent-primary);
+            color: white;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 32px;
+            padding: 16px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .timeline-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -28px;
+            top: 24px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: var(--accent-primary);
+            border: 4px solid var(--bg);
+        }
+
+        .job-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .company-info {
+            font-size: 0.875rem;
+            color: var(--muted-color);
+            margin-bottom: 8px;
+        }
+        
+        .experience-details {
+            color: var(--muted-color);
+            font-size: 0.95rem;
+        }
+
+        .experience-details ul {
+            list-style: disc;
+            margin-left: 20px;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .project-card p {
+            font-size: 0.95rem;
+            color: var(--muted-color);
+            margin-bottom: 12px;
+        }
+        
+        .project-card .action-buttons {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 15px;
+        }
+        
+        .project-card button {
+            background-color: var(--accent-primary);
+            color: white;
+            border: none;
+            border-radius: 999px;
+            padding: 8px 16px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .project-card button:hover {
+            background-color: var(--accent-secondary);
+            transform: translateY(-2px);
+        }
+        
+        .loading-indicator {
+            font-size: 0.875rem;
+            color: var(--muted-color);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            color: var(--muted-color);
+            font-size: 0.875rem;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .timeline::before { left: 10px; }
+            .timeline-item::before { left: -10px; }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            margin: 15% auto;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .close-button {
+            color: var(--muted-color);
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body style="--text-color-filter:invert(1)">
+
+    <header class="hero-section container">
+        <img class="profile-photo" src="profile-photo.jpg" alt="Portrait of Neshwanth Kumar Tene">
+        <h1>Neshwanth Kumar Tene</h1>
+        <p>Materials Scientist & R&D Engineer specializing in nanotechnology for energy and biomedical solutions.</p>
+        <div class="social-links">
+            <a href="mailto:neshwanth99@gmail.com" aria-label="Email"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-mail'%3E%3Crect width='20' height='16' x='2' y='4' rx='2'/%3E%3Cpath d='m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7'/%3E%3C/svg%3E" alt="Email Icon"></a>
+            <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-linkedin'%3E%3Cpath d='M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z'/%3E%3Crect width='4' height='12' x='2' y='9'/%3E%3Ccircle cx='4' cy='4' r='2'/%3E%3C/svg%3E" alt="LinkedIn Icon"></a>
+            <a href="./Neshwanth_Tene_Resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="Resume"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-file-text'%3E%3Cpath d='M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z'/%3E%3Cpolyline points='14 2 14 8 20 8'/%3E%3Cline x1='16' x2='8' y1='13' y2='13'/%3E%3Cline x1='16' x2='8' y1='17' y2='17'/%3E%3Cline x1='10' x2='8' y1='9' y2='9'/%3E%3C/svg%3E" alt="Resume Icon"></a>
+        </div>
+    </header>
+
+    <main class="main-grid container">
+
+        <!-- Left Column: Skills & About -->
+        <aside class="sidebar">
+
+            <section id="about" class="card">
+                <h2 class="card-title">About Me</h2>
+                <p class="about-text">
+                    Highly analytical and results-driven Materials Scientist with a Master's degree specializing in Quality, Process, and R&D Engineering. I bring proven expertise in design control, risk management (PFMEA), and scientific problem-solving methodologies to improve efficiency and product quality. I am passionate about turning experiments into reproducible processes and data-backed decisions.
+                </p>
+            </section>
+
+            <section id="skills" class="card">
+                <h2 class="card-title">Skills & Expertise</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Characterization</h4>
+                        <div class="chips-container">
+                            <span class="chip">SEM</span><span class="chip">TEM</span><span class="chip">DLS</span><span class="chip">UV‑Vis</span><span class="chip">XRD</span><span class="chip">Raman</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>R&D & Process</h4>
+                        <div class="chips-container">
+                            <span class="chip">Prototype testing</span><span class="chip">Design control</span><span class="chip">FMEA</span><span class="chip">DMAIC</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Biomedical & Drug Delivery</h4>
+                        <div class="chips-container">
+                            <span class="chip">mRNA</span><span class="chip">Encapsulation</span><span class="chip">Cytotoxicity</span><span class="chip">Targeting</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Software & Tools</h4>
+                        <div class="chips-container">
+                            <span class="chip">MATLAB</span><span class="chip">Python</span><span class="chip">SolidWorks</span><span class="chip">Minitab</span><span class="chip">Ansys</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </aside>
+
+        <!-- Right Column: Experience & Projects -->
+        <div class="main-content">
+
+            <section id="experience">
+                <h2 class="card-title">Experience</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="job-title">Materials Engineering Intern</div>
+                        <div class="company-info">Chemprise Inc. | June 2025 – Present</div>
+                        <div class="experience-details">
+                            <ul>
+                                <li>Currently contributing to advanced materials engineering projects with a focus on process optimization and quality control.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="job-title">Student Intern</div>
+                        <div class="company-info">Nano Catalytics Inc. | 2024 – 2025</div>
+                        <div class="experience-details">
+                            <ul>
+                                <li>Led research and development efforts to optimize nanoparticle synthesis processes and surface modification techniques, directly enhancing production efficiency and material properties.</li>
+                                <li>Executed comprehensive in-process and final product characterization using DLS, SEM, TEM, and UV-Vis spectroscopy.</li>
+                                <li>Collaborated with multidisciplinary teams to design and implement experiments, contributing to process understanding and refinement.</li>
+                                <li>Analyzed data and authored technical reports to support ongoing projects, ensuring robust process reproducibility.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="job-title">Research Assistant</div>
+                        <div class="company-info">Cincinnati Children's Oncology Lab | 2023</div>
+                        <div class="experience-details">
+                            <ul>
+                                <li>Developed advanced nanoparticle formulation and optimization protocols for targeted drug delivery systems.</li>
+                                <li>Achieved a 50% increase in target-specific accumulation in murine models through optimized experimental design.</li>
+                                <li>Utilized surface modification strategies and characterization techniques to monitor material stability.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="job-title">Mechanical Engineer</div>
+                        <div class="company-info">GLPS Automations | 2020 – 2022</div>
+                        <div class="experience-details">
+                            <ul>
+                                <li>Designed and positioned multi-axis systems for Electro-Optical (EO)/Antenna/IR units.</li>
+                                <li>Contributed to development of equipment requiring precise control and repeatable positioning.</li>
+                                <li>Demonstrated proficiency in precision mechanical design and system integration.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects">
+                <h2 class="card-title">Projects & Publication</h2>
+                <div class="project-card">
+                    <h3>Photothermal Utility Heating — Energy Technology (2024)</h3>
+                    <p id="pub-text">“Photothermal Utility Heating with Diffused Indoor Light via Transparent Fe<sub>3</sub>O<sub>4</sub>@Cu<sub>2-x</sub>S Thin Films”.
+                        Thin‑film stack design and characterization for low‑light heat harvesting.
+                    </p>
+                    <div class="action-buttons">
+                        <button onclick="readText('pub-text')">Read Abstract Aloud ✨</button>
+                        <span id="pub-status" class="loading-indicator"></span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3>Solar‑Powered Transparent Thin Films</h3>
+                    <p id="project-desc-2">Multilayer photothermal films with process optimization for consistent absorptance and durability.</p>
+                    <div class="action-buttons">
+                        <button onclick="summarizeProject(2)">Summarize this Project ✨</button>
+                        <span id="project2-status" class="loading-indicator"></span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3>Charged Nanoparticles for Cancer Targeting</h3>
+                    <p id="project-desc-3">Designed positively/negatively charged magnetic nanoparticles; improved accumulation and imaging contrast.</p>
+                    <div class="action-buttons">
+                        <button onclick="summarizeProject(3)">Summarize this Project ✨</button>
+                        <span id="project3-status" class="loading-indicator"></span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </main>
+    
+    <div id="summaryModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h3 class="card-title">Project Summary</h3>
+            <p id="summaryText"></p>
+        </div>
+    </div>
+
+    <footer>© <span id="y"></span> Neshwanth Kumar Tene</footer>
+
+    <script>
+        document.getElementById('y').textContent = new Date().getFullYear();
+        
+        // This is a placeholder for your actual Gemini API key.
+        const apiKey = "YOUR_GEMINI_API_KEY_HERE";
+
+        // Function to convert PCM audio data to a WAV blob and play it.
+        function pcmToWav(pcm16, sampleRate) {
+            const pcmData = pcm16.buffer;
+            const dataLength = pcmData.byteLength;
+            const buffer = new ArrayBuffer(44 + dataLength);
+            const view = new DataView(buffer);
+            let offset = 0;
+
+            function writeString(str) {
+                for (let i = 0; i < str.length; i++) {
+                    view.setUint8(offset + i, str.charCodeAt(i));
+                }
+                offset += str.length;
+            }
+
+            function writeUint32(val) {
+                view.setUint32(offset, val, true);
+                offset += 4;
+            }
+
+            function writeUint16(val) {
+                view.setUint16(offset, val, true);
+                offset += 2;
+            }
+
+            writeString('RIFF');
+            writeUint32(36 + dataLength);
+            writeString('WAVE');
+            writeString('fmt ');
+            writeUint32(16);
+            writeUint16(1);
+            writeUint16(1);
+            writeUint32(sampleRate);
+            writeUint32(sampleRate * 2);
+            writeUint16(2);
+            writeUint16(16);
+            writeString('data');
+            writeUint32(dataLength);
+
+            const pcmView = new Int16Array(pcmData);
+            for (let i = 0; i < pcmView.length; i++) {
+                view.setInt16(offset, pcmView[i], true);
+                offset += 2;
+            }
+
+            return new Blob([view], { type: 'audio/wav' });
+        }
+
+        async function readText(textId) {
+            if (apiKey === "YOUR_GEMINI_API_KEY_HERE") {
+                alert("Please replace the placeholder API key in the JavaScript code to enable this feature.");
+                return;
+            }
+            const text = document.getElementById(textId).textContent;
+            const statusElement = document.getElementById('pub-status');
+            statusElement.textContent = 'Generating speech...';
+
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`;
+
+            const payload = {
+                contents: [{ parts: [{ text: text }] }],
+                generationConfig: {
+                    responseModalities: ["AUDIO"],
+                    speechConfig: {
+                        voiceConfig: { prebuiltVoiceConfig: { voiceName: "Kore" } }
+                    }
+                },
+                model: "gemini-2.5-flash-preview-tts"
+            };
+            
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                const result = await response.json();
+                
+                if (!response.ok) {
+                    const errorMsg = result?.error?.message || response.statusText;
+                    throw new Error(`API call failed: ${errorMsg}`);
+                }
+
+                const audioData = result?.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
+
+                if (audioData) {
+                    const pcmData = Uint8Array.from(atob(audioData), c => c.charCodeAt(0));
+                    const pcm16 = new Int16Array(pcmData.buffer);
+                    const wavBlob = pcmToWav(pcm16, 16000);
+                    const audioUrl = URL.createObjectURL(wavBlob);
+                    const audio = new Audio(audioUrl);
+                    audio.play();
+                    statusElement.textContent = 'Playing...';
+                    audio.onended = () => { statusElement.textContent = ''; };
+                } else {
+                    statusElement.textContent = 'Error: No audio data returned.';
+                }
+            } catch (error) {
+                statusElement.textContent = 'Error generating audio.';
+                console.error('TTS API error:', error);
+            }
+        }
+
+        async function summarizeProject(projectId) {
+            if (apiKey === "YOUR_GEMINI_API_KEY_HERE") {
+                alert("Please replace the placeholder API key in the JavaScript code to enable this feature.");
+                return;
+            }
+            const projectDescId = `project-desc-${projectId}`;
+            const descriptionElement = document.getElementById(projectDescId);
+            const text = descriptionElement.textContent;
+            const statusElement = document.getElementById(`project${projectId}-status`);
+            statusElement.textContent = 'Summarizing...';
+
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+            const systemPrompt = "Act as a professional science writer and summarize the following project description in a concise, single-paragraph summary of no more than 50 words. Focus on the core innovation and its significance.";
+
+            const payload = {
+                contents: [{ parts: [{ text: text }] }],
+                tools: [{ "google_search": {} }],
+                systemInstruction: {
+                    parts: [{ text: systemPrompt }]
+                },
+            };
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                
+                if (!response.ok) {
+                    const errorMsg = result?.error?.message || response.statusText;
+                    throw new Error(`API call failed: ${errorMsg}`);
+                }
+
+                const summary = result.candidates?.[0]?.content?.parts?.[0]?.text;
+
+                if (summary) {
+                    document.getElementById('summaryText').textContent = summary;
+                    document.getElementById('summaryModal').style.display = 'block';
+                } else {
+                    document.getElementById('summaryText').textContent = "Summary could not be generated at this time.";
+                    document.getElementById('summaryModal').style.display = 'block';
+                }
+            } catch (error) {
+                document.getElementById('summaryText').textContent = "Error: Failed to summarize the project.";
+                document.getElementById('summaryModal').style.display = 'block';
+                console.error('Summary API error:', error);
+            } finally {
+                statusElement.textContent = '';
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('summaryModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('summaryModal');
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
